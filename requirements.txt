@@ -1,0 +1,4 @@
+requests
+python-crontab
+flask
+google-cloud-storage

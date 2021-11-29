@@ -1,0 +1,32 @@
+<html>
+   <body>
+      <nav class="topnav">
+         <a href="{{ url_for('choose_file', athan='takbir') }}">Takbir</a>
+         <a>-----</a>
+         <a href="{{ url_for('choose_file', athan='full') }}">Full</a>
+         <a>-----</a>
+         <a href="{{ url_for('choose_file', athan='fajr') }}">Fajr</a>
+         <a>-----</a>
+         <a href="{{ url_for('choose_file', athan='deleted') }}">Deleted</a>
+      </nav>
+      <br>
+      <h4>Upload a new file:</h4>
+      <form action = "{{ url_for('choose_file', athan=athan) }}" method = "POST" 
+         enctype = "multipart/form-data">
+         <input type = "file" name = "file" />
+         <input type = "submit"/>
+      </form>
+      <h2>{{ athan }}</h2>
+      <p>{{ confirmation }}</p>
+      {% for file in audio_files %}
+         <audio controls>
+            <source src={{ url_for('static', filename=file) }} type="audio/mpeg">
+         </audio>
+         <form action = "{{ url_for('choose_file', athan='delete', file_path=file) }}" enctype='text/plain' method = "POST">
+         <input type = "submit" value="delete"/>
+      </form>
+         <br>
+         <br>
+      {% endfor %}
+   </body>
+</html>
