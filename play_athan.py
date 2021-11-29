@@ -8,6 +8,7 @@ token = keys['shoorbapi_token'] # HASS API token
 entity_id = keys['entity_id'] # speaker ID or speaker group ID
 
 host = 'localhost'
+media_host = '192.168.86.54'
 domain = 'media_player'
 service = 'volume_set'
 entity_id = entity_id
@@ -20,20 +21,15 @@ headers = {
 }
 
 athan_option = sys.argv[1]
-
 # lower the volume if Fajr
 volume = .4 if athan_option == 'fajr' else .5
 
 if athan_option == 'fajr':
-    #media = 'https://storage.googleapis.com/fajr-athan/play.mp3'
-    media = 'static/fajr/play.mp3'
+    media = f'http://{media_host}:8080/static/fajr/play.mp3'
 elif athan_option == 'full':
-    #media = 'https://storage.googleapis.com/full-athan/play.mp3'
-    media = 'static/full/play.mp3'
+    media = f'http://{media_host}:8080/static/full/play.mp3'
 else:
-    #media = 'https://storage.googleapis.com/takbir/play.mp3'
-    media = 'static/takbir/play.mp3'
-
+    media = f'http://{media_host}:8080/static/takbir/play.mp3'
 
 data = {
     'entity_id' : entity_id,
