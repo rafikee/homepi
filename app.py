@@ -36,11 +36,13 @@ def choose_file(athan):
    # Display the files in the folder
    if athan != 'deleted':
       filenames = next(walk('static/' + athan), (None, None, []))[2]  # [] if no file
+      filenames = [x for x in filenames if '.git' not in x] # drop the hidden files
       audio_files = [athan +'/' + x for x in filenames]
    else:
       audio_files = []
-      for folder in next(os.walk('static/deleted'))[1]:
+      for folder in next(walk('static/deleted'))[1]:
          filenames = next(walk('static/' + athan + '/' + folder), (None, None, []))[2]  # [] if no file
+         filenames = [x for x in filenames if '.git' not in x] # drop the hidden files
          audio_files.extend([athan +'/' + folder + '/' + x for x in filenames])
    return render_template('upload.html', audio_files=audio_files, athan=athan, confirmation=confirmation)
 		

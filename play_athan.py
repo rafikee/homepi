@@ -25,11 +25,14 @@ athan_option = sys.argv[1]
 volume = .4 if athan_option == 'fajr' else .5
 
 if athan_option == 'fajr':
-    media = 'https://storage.googleapis.com/fajr-athan/play.mp3'
+    #media = 'https://storage.googleapis.com/fajr-athan/play.mp3'
+    media = 'static/fajr/play.mp3'
 elif athan_option == 'full':
-    media = 'https://storage.googleapis.com/full-athan/play.mp3'
+    #media = 'https://storage.googleapis.com/full-athan/play.mp3'
+    media = 'static/full/play.mp3'
 else:
-    media = 'https://storage.googleapis.com/takbir/play.mp3'
+    #media = 'https://storage.googleapis.com/takbir/play.mp3'
+    media = 'static/takbir/play.mp3'
 
 
 data = {
