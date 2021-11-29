@@ -20,11 +20,24 @@
       <p>{{ confirmation }}</p>
       {% for file in audio_files %}
          <audio controls>
-            <source src={{ url_for('static', filename=file) }} type="audio/mpeg">
+            <source src="{{ url_for('static', filename=file) }}" type="audio/mpeg">
          </audio>
-         <form action = "{{ url_for('choose_file', athan='delete', file_path=file) }}" enctype='text/plain' method = "POST">
-         <input type = "submit" value="delete"/>
-      </form>
+         {% if athan != 'deleted' %}
+         <form action = "{{ url_for('choose_file', athan='delete') }}" method = "POST">
+            <input type = "submit" value="delete"/>
+            <input type = "hidden" name="file_path" value="{{ file }}"/>
+         </form>
+         {% endif %}
+         {% if athan == 'deleted' %}
+         <form action = "{{ url_for('choose_file', athan='delete_forever') }}" method = "POST">
+            <input type = "submit" value="delete forever"/>
+            <input type = "hidden" name="file_path" value="{{ file }}"/>
+         </form>
+         <form action = "{{ url_for('choose_file', athan='restore') }}" method = "POST">
+            <input type = "submit" value="restore"/>
+            <input type = "hidden" name="file_path" value="{{ file }}"/>
+         </form>
+         {% endif %}
          <br>
          <br>
       {% endfor %}
