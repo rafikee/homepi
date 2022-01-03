@@ -1,4 +1,5 @@
 "This should be schedule to run in crontab at set times per day"
+'''0 7-22 * * * cd /home/pi/shoorbapi/ && /usr/bin/python3 /home/pi/shoorbapi/get_crypto.py > /dev/null 2>&1'''
 
 from requests import get, post
 from lightdb import LightDB
