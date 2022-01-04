@@ -3,6 +3,7 @@ from lightdb import LightDB
 from crontab import CronTab
 from random import randrange, choice
 import sys
+import getpass
 
 '''Needs crontab job like so: @daily cd /home/pi/shoorbapi/ && /usr/bin/python3 /home/pi/shoorbapi/random_exercise.py sched > /dev/null 2>&1'''
 
@@ -39,7 +40,8 @@ NUM_TIMES = 3
 
 # remove the existing jobs
 def rem_jobs():
-    cron = CronTab(user='pi')
+    user = getpass.getuser()
+    cron = CronTab(user=user)
     for job in cron:
         if 'exercise' in job.comment:
             cron.remove(job)
@@ -47,7 +49,8 @@ def rem_jobs():
 
 # schedule jobs
 def sched_jobs():
-    cron = CronTab(user='pi')
+    user = getpass.getuser()
+    cron = CronTab(user=user)
     # get a random hour and minute between 10:00AM and 8:59PM
     for _ in range(NUM_TIMES):
         job = cron.new(command=f'cd /home/pi/shoorbapi/ && /usr/bin/python3 /home/pi/shoorbapi/random_exercise.py push > /dev/null 2>&1 # exercise')
