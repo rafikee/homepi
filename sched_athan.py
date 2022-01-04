@@ -3,6 +3,7 @@ from get_keys import get_keys
 from prayertimes import PrayTimes
 import time
 import os
+import getpass
 
 # get all the variables from our json file
 keys = get_keys()
@@ -38,7 +39,8 @@ for prayer in athan_times:
     athan_cron[prayer] = {'hour' : int(athan_times[prayer].split(':')[0]), 'min' : int(athan_times[prayer].split(':')[1])}
 
 # schedule all the cron jobs
-cron = CronTab(user='pi')
+user = getpass.getuser()
+cron = CronTab(user=user)
 for job in cron:
     if 'athan' in job.comment:
         cron.remove(job)
