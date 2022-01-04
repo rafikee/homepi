@@ -8,15 +8,17 @@ from lightdb import LightDB
 db file example
 
 {
-    "ifttt_event" : "event_name",
+    "ifttt_crypto_event" : "event_name",
     "ifttt_key" : "key",
+    "google_crypto_image" : "google file id",
     "crypto" : ["dogecoin", "ripple", "decentraland", "shiba-inu" ,"helium", "basic-attention-token", "micropets"]
 }
 """
 
 # get db from json file with keys
 db = LightDB("keys.json")
-ifttt_event = db.get("ifttt_event") # get the event
+ifttt_event = db.get("ifttt_crypto_event") # get the event
+google_image_id = db.get("google_crypto_image") # get the Google Drive image ID
 ifttt_key = db.get("ifttt_key") # get the key
 
 prices = []
@@ -34,8 +36,10 @@ for coin in coins:
 value = " | ".join(prices) # create one big string for all the prices that we'll use to pipe into the variable to IFTTT
 
 data = {
-    "value1" : value
+    "message_title" : "Crypto Update",
+    "message" : value,
+    "image_url" : f"https://drive.google.com/uc?id={google_image_id}"
 }
 
 # push prices to IFTTT notification on phone 
-post(f'https://maker.ifttt.com/trigger/{ifttt_event}/with/key/{ifttt_key}', data=data)
+post(f'https://maker.ifttt.com/trigger/{ifttt_event}/json/with/key/{ifttt_key}', data=data)
