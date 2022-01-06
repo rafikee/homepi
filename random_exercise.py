@@ -5,7 +5,7 @@ from random import randrange, choice
 import sys
 import getpass
 
-'''Needs crontab job like so: @daily cd /home/pi/shoorbapi/ && /usr/bin/python3 /home/pi/shoorbapi/random_exercise.py sched > /dev/null 2>&1'''
+'''Needs crontab job like so: 0 0 * * * cd /home/pi/shoorbapi/ && /usr/bin/python3 /home/pi/shoorbapi/random_exercise.py sched > /dev/null 2>&1'''
 
 '''
 Example db file:
