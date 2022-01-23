@@ -29,6 +29,7 @@ How to deploy:
             - this can be downloaded from IAM
             - other service account can be created an used
             - if so make sure to grant this account permission to the funcion
+    - In the IAM console add a new role to give the service account access to secret manager secret accessor
     - Create a google sheet with one column titled "coins"
         - name the sheet 'get crypto'
         - share this sheet with the service account you are using
