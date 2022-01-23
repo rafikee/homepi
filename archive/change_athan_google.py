@@ -1,19 +1,17 @@
+"This is the old function to change athans in the google bucket to randomize the athans"
+
 from google.cloud import storage
 from random import randrange
 
 # this bucket has the sounds that we'll randomly change
-bucket_name = 'takbir'
-file_to_play = 'play.mp3' # the name of the file that is currently playing
+bucket_name = "takbir"
+file_to_play = "play.mp3"  # the name of the file that is currently playing
 # All the buckets that we want to change
-buckets = [
-    'takbir',
-    'fajr-athan',
-    'full-athan'
-]
+buckets = ["takbir", "fajr-athan", "full-athan"]
 
 # Environment variable for google authentication set in bashrc
 # GOOGLE_APPLICATION_CREDENTIALS=$shoorbapi_path/home-automation-google.json
-#connect to the bucket
+# connect to the bucket
 storage_client = storage.Client()
 
 # loop through all the buckets and setup the new athan randomly
@@ -35,7 +33,7 @@ for bucket_name in buckets:
 
     # use the number of files to pick one at random
     count = len(blobs)
-    new_file = blobs[randrange(0,count)]
+    new_file = blobs[randrange(0, count)]
 
     # setup the new file to play
     blob_new = bucket.blob(new_file)
