@@ -36,6 +36,9 @@ How to deploy:
         - use their service account email address
         - add in row by row the names of the exercises of interest
     - Enable the Cloud Scheduler in GCP
+    - Add a new job with a frequency like: 45 8,11,13,16,19,21 * * *
+    - Make sure to set the right timezone
+    - for the execution use the URL from the cloud function
 
 Use the following command to deploy:
 * change the project_id accordingly
