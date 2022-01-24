@@ -85,23 +85,48 @@ def get_crypto(request):
     prices = []
     s = ""  # string to hold all the values we'll push to IFTTT
 
+    error_coins = []
+    error = False
+
+    if not coins:
+        value = "The Google Sheet is missing the 'coins' column"
+
     for coin in coins:
         x = get(
             f"https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids={coin}"
-        ).json()[0]
-        price = round(float(x["current_price"]), 2)
+        ).json()
+        if not x:
+            error = True
+            error_coins.append(coin)
+            continue
+        x = x[0]
+        price = x.get("current_price", None)
+        symbol = x.get("symbol", None)
+        if not price or not symbol:
+            error = True
+            error_coins.append(coin)
+            continue
+        price = round(float(price), 2)
         if price == 0:
             price = round(
-                float(x["current_price"]) * 1000, 2
+                float(price) * 1000, 2
             )  # if the price is super low multiply it so we can see it scale
             if price == 0:
                 price = round(
-                    float(x["current_price"]) * 100000, 2
+                    float(price) * 100000, 2
                 )  # if the price is still super low
-        prices.append(f"{x['symbol']}: {price}")
-    value = " | ".join(
-        prices
-    )  # create one big string for all the prices that we'll use to pipe into the variable to IFTTT
+        prices.append(f"{symbol}: {price}")
+
+    if prices:
+        value = " | ".join(
+            prices
+        )  # create one big string for all the prices that we'll use to pipe into the variable to IFTTT
+        if error:
+            value += ". FYI these coins failed: "
+            value += ", ".join(error_coins)
+
+    if not value:
+        value = "Error in getting crypto. Make sure all the names are valid."
 
     data = {
         "message_title": "Crypto Update",
