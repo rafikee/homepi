@@ -1,2 +1,2 @@
 # homepi
-My personal home projects with the pi
+My personal home projects with the pi and GCP

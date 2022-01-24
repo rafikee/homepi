@@ -1,3 +1,0 @@
-google-cloud-secret-manager
-gspread
-oauth2client
