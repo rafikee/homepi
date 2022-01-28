@@ -8,7 +8,6 @@ app = Flask(__name__)
 # show the form to submit the upload
 @app.route("/upload/<athan>", methods=["GET", "POST"])
 def choose_file(athan):
-    print(athan)
     confirmation = ""
     if request.method == "POST":
         if athan == "delete_forever":
