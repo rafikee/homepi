@@ -8,6 +8,7 @@ A crontab job exists to schedule all the necessary athan calls every morning as 
 - For each prayer the setting that determines what kind of audio file is going to play is hard coded in the script that casts the audio. A better way would be to allow the user to choose this setting in the Flask front end.
 - The same issue exists for Volume, each athan is hard coded in the script
 - Uploading duplicate file name will override each other
+- You can't name a file play.mp3 because that will override the existing file logic
 - The display name of the file in the Flask front end includes the subdirectory like `takbir/1.mp3`. We can't get rid the the directory part because when we delete it we should know where to put it back
 - When I delete a file the URL will take me to `delete` but when I click on `deleted` it takes me to `deleted`. But essentially they are the same place
 
