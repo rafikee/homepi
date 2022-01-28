@@ -1,4 +1,4 @@
 *.json
-__pycahce__/
+__pycahce__/*
 keys.json
 .DS_Store

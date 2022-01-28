@@ -12,6 +12,7 @@
    </nav>
    <br>
    <h4>Upload a new file:</h4>
+   <p>Please do not name the file: "play.mp3"</p>
    <form action="{{ url_for('choose_file', athan=athan) }}" method="POST" enctype="multipart/form-data">
       <input type="file" name="file" />
       <input type="submit" />

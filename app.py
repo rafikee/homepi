@@ -37,6 +37,8 @@ def choose_file(athan):
     if athan != "deleted":
         filenames = next(walk("static/" + athan), (None, None, []))[2]  # [] if no file
         filenames = [x for x in filenames if ".git" not in x]  # drop the hidden files
+        # don't let them change play.mp3
+        filenames = [x for x in filenames if x != "play.mp3"]
         audio_files = [athan + "/" + x for x in filenames]
     else:
         audio_files = []
