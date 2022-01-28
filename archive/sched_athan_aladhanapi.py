@@ -8,7 +8,7 @@ import os
 keys = get_keys()  # get lat and lon from json file
 lat = keys["lat"]
 lon = keys["lon"]
-path = os.getenv("shoorbapi_path")
+path = os.getenv("shoorbathan")
 
 # Must already have a line in cron for each prayer like so:
 """* * * * * /home/pi/shoorbapi/play_athan.sh takbir >/dev/null 2>&1 # athan_Isha"""

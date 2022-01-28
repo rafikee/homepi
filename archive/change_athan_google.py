@@ -10,7 +10,7 @@ file_to_play = "play.mp3"  # the name of the file that is currently playing
 buckets = ["takbir", "fajr-athan", "full-athan"]
 
 # Environment variable for google authentication set in bashrc
-# GOOGLE_APPLICATION_CREDENTIALS=$shoorbapi_path/home-automation-google.json
+# GOOGLE_APPLICATION_CREDENTIALS=$shoorbathan/home-automation-google.json
 # connect to the bucket
 storage_client = storage.Client()
 
