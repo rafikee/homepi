@@ -1,5 +1,4 @@
 *.json
-*.mp3
 __pycahce__/
 keys.json
 .DS_Store
