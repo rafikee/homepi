@@ -1,7 +1,7 @@
 "This is the old version that runs direclty on the pi not using GCP"
 
 "This should be scheduled to run in crontab at set times per day"
-"""0 7-22 * * * cd /home/pi/shoorbapi/ && /usr/bin/python3 /home/pi/shoorbapi/get_crypto.py > /dev/null 2>&1"""
+"""0 7-22 * * * cd /home/pi/shoorbathan/ && /usr/bin/python3 /home/pi/shoorbathan/get_crypto.py > /dev/null 2>&1"""
 
 from requests import get, post
 from lightdb import LightDB

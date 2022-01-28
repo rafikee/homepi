@@ -11,7 +11,7 @@ lon = keys["lon"]
 path = os.getenv("shoorbathan")
 
 # Must already have a line in cron for each prayer like so:
-"""* * * * * /home/pi/shoorbapi/play_athan.sh takbir >/dev/null 2>&1 # athan_Isha"""
+"""* * * * * /home/pi/shoorbathan/play_athan.sh takbir >/dev/null 2>&1 # athan_Isha"""
 # the prayer name in the comment must match the string in the list of prayer names below
 
 # get the athan timings for the day
